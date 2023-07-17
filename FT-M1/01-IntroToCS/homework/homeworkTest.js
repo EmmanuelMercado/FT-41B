@@ -1,7 +1,5 @@
-'use strict';
-
 function BinarioADecimal(num) {
-   var arr = num.split("")
+    var arr = num.split("")
     var arrReverse = arr.reverse()
     var resultado = 0; 
     //console.log(arrReverse);
@@ -9,11 +7,12 @@ function BinarioADecimal(num) {
         resultado += arrReverse[i] * Math.pow(2,i)
     }
     //console.log(resultado);
-    return resultado;
 }
 
+console.log(BinarioADecimal("11001"))
+
 function DecimalABinario(num) {
-   var newNumber = num;
+    var newNumber = num;
     var resultado = "";
     while (newNumber>0){
         
@@ -28,7 +27,4 @@ function DecimalABinario(num) {
     return resultado
 }
 
-module.exports = {
-   BinarioADecimal,
-   DecimalABinario,
-};
+console.log(DecimalABinario(25));
