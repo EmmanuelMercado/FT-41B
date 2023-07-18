@@ -42,10 +42,33 @@
 // }
 // console.log(object.f());
 
-var y = 10
 
-function foo(){
-    console.log(y);
-}
+// var snack = 'Meow Mix';
 
-foo()
+// function getFood(food) {
+//     if (food) {
+//       var snack = 'Friskies';
+//       return snack;
+//    }
+//    return snack;
+// }
+
+// console.log(getFood(false)); 
+
+
+var fullname = 'Juan Perez';
+var obj = {
+   fullname: 'Natalia Nerea',
+   prop: {
+      fullname: 'Aurelio De Rosa',
+      getFullname: function () {
+         return this.fullname;
+      },
+   },
+};
+
+console.log(obj.prop.getFullname()); //Natalia
+
+var test = obj.prop.getFullname;
+
+console.log(test()); //Aurelio De Rosa

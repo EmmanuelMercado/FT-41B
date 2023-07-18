@@ -103,8 +103,8 @@ parseInt("09") //9
 
 ```javascript
 function test() {
-   console.log(a);
-   console.log(foo());
+   console.log(a); //undefined, debido a que por el hoisting se declara mas no se le da valor
+   console.log(foo()); // 2, las funciones por hoisting se declaran con todo y cuerpo
 
    var a = 1;
    function foo() {
@@ -128,7 +128,7 @@ function getFood(food) {
    return snack;
 }
 
-getFood(false);
+getFood(false); //Undefined, la variable snack se declaro dentro de la función.
 ```
 
 ### This
@@ -147,11 +147,11 @@ var obj = {
    },
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); //Natalia
 
 var test = obj.prop.getFullname;
 
-console.log(test());
+console.log(test()); //Aurelio De Rosa
 ```
 
 ### Event loop
@@ -170,5 +170,5 @@ function printing() {
    console.log(4);
 }
 
-printing();
+printing(); //1,4,3,2
 ```
