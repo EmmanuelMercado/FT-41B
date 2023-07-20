@@ -147,7 +147,7 @@ var obj = {
    },
 };
 
-console.log(obj.prop.getFullname()); //Natalia
+console.log(obj.prop.getFullname()); //aurelio
 
 var test = obj.prop.getFullname;
 

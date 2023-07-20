@@ -56,19 +56,44 @@
 // console.log(getFood(false)); 
 
 
-var fullname = 'Juan Perez';
-var obj = {
-   fullname: 'Natalia Nerea',
-   prop: {
-      fullname: 'Aurelio De Rosa',
-      getFullname: function () {
-         return this.fullname;
-      },
-   },
-};
+// var fullname = 'Juan Perez';
+// var obj = {
+//    fullname: 'Natalia Nerea',
+//    prop: {
+//       fullname: 'Aurelio De Rosa',
+//       getFullname: function () {
+//          return this.fullname;
+//       },
+//    },
+// };
 
-console.log(obj.prop.getFullname()); //Natalia
+// console.log(obj.prop.getFullname()); //Natalia
 
-var test = obj.prop.getFullname;
+// var test = obj.prop.getFullname;
 
-console.log(test()); //Aurelio De Rosa
+// console.log(test()); //Aurelio De Rosa
+// console.log(x);
+// var x = 10
+// console.log(x);
+// var f = function(){
+//    console.log(x);
+//    var x = 15
+//    console.log(x);
+//    var c = function(){
+//       console.log(x);
+//       x = 16
+//       console.log(x);
+//    }
+//    console.log(x);
+//    c()
+//    console.log(x);
+// }
+// console.log(x);
+// f()
+// console.log(x);
+
+var instructor = 'Tony'; 
+if (true) {
+   var instructor = 'Franco';
+}
+console.log(instructor); //Franco
