@@ -14,9 +14,21 @@ Secuencia:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 Como ejercicio adicional y completamente opcional, al terminar de resolver este problema pueden intentar definir funciones que logren los mismos resultados pero de manera iterativa.
 */
 
-function nFactorial(n) {}
+function nFactorial(n) {
+  //Condición de corte n=0
+  if (n===0 || n === 1) return 1 
+  if (n<0) return 0 
+  return n*nFactorial(n-1) //Return 120
+}
 
-function nFibonacci(n) {}
+function nFibonacci(n) {
+  //Primer 0
+  //Segundo 1
+  if (n<=0) return 0
+    else if (n===1) return 1
+
+    else return nFibonacci(n - 1) + nFibonacci(n - 2);
+}
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
@@ -27,7 +39,20 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 Pueden utilizar class o función constructora.
 */
 
-function Queue() {}
+function Queue() {
+  this.arr= []
+
+}
+Queue.prototype.enqueue=function(arg){
+  return this.arr.push(arg);
+}
+Queue.prototype.dequeue=function(){
+  return this.arr.shift();
+}
+
+Queue.prototype.size=function(){
+  return this.arr.length;
+}
 
 /*⚠️ No modificar nada debajo de esta línea ⚠️*/
 module.exports = {
