@@ -1,5 +1,3 @@
-'use strict';
-
 /* EJERCICIO 1
 Implementar la clase LinkedList, definiendo los siguientes métodos:
   - add: agrega un nuevo nodo al final de la lista;
@@ -11,69 +9,69 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   En caso de que la búsqueda no arroje resultados, search debe retornar null.
 */
 function LinkedList() {
-  this.head = null
-  this._length = 0
+    this.head = null
+    this._length = 0
 }
 
 function Node(value) {
-  this.value = value
-  this.next = null
+    this.data = value;
+    this.next = null;
 }
+//- add: agrega un nuevo nodo al final de la lista;
 LinkedList.prototype.add=function(value){
-  let node = new Node(value); //Node {value:value, next:null}
-  let current = this.head; // Linkedlist{Node {value:value, next:Node {value:value, next:null}}}
-  
-  if(!current){//Verificar que la lista esté vacia, osea que no tenga vagones la locomotora
-      this.head = node //This.head es el puntero del vagón principal, que apuntará al nuevo nodo, en este caso es el primero
-      return node;
-  }
-  //console.log(current);
-  while(current.next !== null){ //Busca si hay algún dato posterior hasta que encuentre un vació, busca el fin del tren
-      current = current.next
-  }
-  current.next = node
-  console.log(current);
-  return current;
-  
+    var node = new Node(value); //Instanciar el nodo(cajón del tren)
+    var current = this.head; //Al inicio se encuentra en el head
+
+    if (!current){
+        this.head = node 
+        this._length++;//Si no hay nada en la lista, le da el valor al primer cajón
+        return node;
+    }
+    while(curent.next){ //compara si hay valor en el actual cajon
+        current = current.next
+    }
+    current.next=node;
+    this._length++;
+    return node;
 }
-LinkedList.prototype.remove= function(){
-  let current = this.head
-  //Verificar si la lista está vacia
-  console.log(current);
-  if(!current){
-      this.head = null
-      return null
-  }
-  else if(!this.head.next){//Linkedlist{Node {value:value, next: null}}{}
-      console.log(current);
-      let borrado = current.value
-      this.head = null
-      return borrado;
-  }
-  while(current.next.next){
-      console.log('Llegue aquí');
-      current = current.next
-  }
-  let borrado = current.next.value
-  current.next = null
-  //console.log(lista);
-  return borrado
+// - remove: elimina el último nodo de la lista y retorna su valor (tener en cuenta el caso particular de una lista de un solo nodo y de una lista vacía);
+LinkedList.prototype.remove=function(){ 
+    if(!this.head){//Revisar si hay algo en la cabeza
+        return this.head
+    }
+    else if(!this.head.next){
+        let current = this.head;
+        this.head = null;
+        this._length--;
+        return current.value
+    }
+    else{
+        let current = this.head;
+        while (current.next.next){ //Comprueba si hay un cajón después del actual
+            current = current.next;
+        }
+        var node = current.next
+        current .next = null;
+        this._length--;
+        return node;
+
+    }
 }
 LinkedList.prototype.search=function(arg){
-  var current = this.head;
-  if (!current){
-      return null
-  }
-  while(current){
-      if(typeof arg === 'function'){
-          if(arg(current.value)) return current.value;
-      }
-      else{
-          if(current.value===arg) return current.value;
-      }
-      current = current.next;
-  }
-  return null;
+    var current = this.head;
+    if (!current){
+        return null
+    }
+    while(current){
+        if(typeof arg === 'function'){
+            if(arg(current.value)) return current.value;
+        }
+        else{
+            if(current.value===arg) return current.value;
+        }
+        current = current.next;
+    }
+    return null;
 }
 
 /* EJERCICIO 2
@@ -89,48 +87,44 @@ La clase debe tener los siguientes métodos:
 
 Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero puedo chequear, con hasKey, si ya hay algo en la tabla con el nombre 'instructora'; luego, invocando set('instructora', 'Ani'), se almacenará el par clave-valor en un bucket específico (determinado al hashear la clave)
 */
-function HashTable(){
-  this.array=[];
-  this.numBuckets = 35;
-}
-HashTable.prototype.hash = function(value){
-  let hash=0;
-  for(let i=0; i<value.length;i++){
-      hash+= value.charCodeAt(i)
-  }
-  return hash % this.numBuckets
-}
-HashTable.prototype.set = function(key,value){
-  if(typeof key !=='string'){
-      throw TypeError('Keys must be strings')
-  }
-  let index = this.hash(key)
-  console.log(index);
-  if(!this.array[index]){
-      this.array[index]={}//Le determina que en esa posición habrá un objeto
-  }
-  this.array[index][key]= value
-  return this.array
-}
-HashTable.prototype.get = function(key){
-  if(typeof key !=='string'){
-      throw TypeError('Keys must be strings') //El throw lanza un error
-  }
-  let index = this.hash(key)
-  if (this.array[index]===undefined){ //Busca que si en ese indice está vació
-      return ('No hay')
-  }
-  return this.array[index][key];
-}
-HashTable.prototype.hasKey = function(key){
-  let indice = this.hash(key)
-  return this.array[indice].hasOwnProperty(key)
-}
-// No modifiquen nada debajo de esta linea
-// --------------------------------
 
-module.exports = {
-   Node,
-   LinkedList,
-   HashTable,
-};
+function HashTable(){
+    this.array=[]
+    this.numBuckets= 35
+}
+
+HashTable.prototype.hash= function(key){
+    let hash = 0
+    for (let i=0;i<key.length;i++){
+        hash += key.charCodeAt(i)
+        //Saca el valor númerico del indice para después obtener uno solo
+    }
+    console.log(hash);
+    return hash % this.numBuckets //Para obtener un valor que entre en el número de 
+    //buckets, cuando se hace un módulo (%) Siempre dará un número menor}
+    //Ejemplo 132%35 = 27
+}
+
+HashTable.prototype.set= function(key,value){
+    if(typeof key==='string'){
+     throw new TypeError('Keys must be strings')
+    }
+    var hash = this.hash(key)
+    if(!this.array[hash]){
+        this.array[hash]={}
+    }
+    this.array[hash][key]= value;
+}
+HashTable.prototype.get= function(key){
+    var hash = this.hash(key)
+    if(this.array[hash][key]){
+        return this.array[hash][key]
+    }
+    else{
+        return false
+    }
+}
+HashTable.prototype.hasKey= function(key){
+    var hash = this.hash(key)
+    return this.array[hash].hasOwnProperty(key)
+}
