@@ -7,7 +7,7 @@ function mergeSort(array) { //9,7,3,1,5,2,6
   
     //okey probemos ahora
 
-    if(array.length<2) return array //Caso de corte: que el támaño del array sea 1 
+    if(array.length<2) return array //Caso de corte: que el támaño del array sea 1 ds
     const mitad = Math.floor(array.length/2)
     let left =  array.slice(0,mitad)//Parte el arreglo [9,7,3] **El último número no lo incluye
     let right = array.slice(mitad)//Parte el arreglo [1,5,2,6] **El último número no lo incluye, si yo quiero todo no le pongo el segundo arg
@@ -35,5 +35,16 @@ function mergeSort(array) { //9,7,3,1,5,2,6
     return array;
   }
 
-  let arr = [9,7,3,1,5,2,6]
-  console.log(mergeSort(arr));
+
+
+
+
+//   clase con cande 
+
+function quicksorty(array){
+
+
+}
+
+let arr = [1,2,3,4,5,6,7]
+console.log(Mah.Random());
