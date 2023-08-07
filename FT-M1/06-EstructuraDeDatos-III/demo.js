@@ -86,5 +86,5 @@ BinarySearchTree.prototype.depthFirstForEach = function(cb,pedido){
     }
 }
 
-miArbolito.depthFirstForEach(cb,'post-order')
+console.log(miArbolito.depthFirstForEach(cb,'post-order'))
 console.log(array);

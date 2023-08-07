@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 1 IIFE</title>
+</head>
+
+<body>
+    <div id="suma">Suma:</div>
+    <button id="btnSuma">SUMAR</button>
+    <div id="resta">Resta:</div>
+    <button id="btnResta">RESTAR</button>
+
+    <script src="./resta.js"></script>
+    <script src="./suma.js"></script>
+
+    <script type="text/javascript">
+        document.getElementById("btnSuma").addEventListener("click", function () {
+            document.getElementById('suma').innerHTML += window.suma(2, 1)
+        })
+
+        document.getElementById("btnResta").addEventListener("click", function () {
+            document.getElementById('resta').innerHTML += window.resta(2, 1)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+    <div id="respuesta"></div>
+
+    <button id="get">GET</button>
+    <button id="post">POST</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        //Ejemplo GET
+        let id = 1;
+        $("#get").click(function(){
+            $.get('https://jsonplaceholder.typicode.com/photos/1', function(data){
+                let img = document.createElement('img')
+                img.src = data.thumbnailUrl;
+                let title = document.createElement('h4')
+                title.textContent = data.title //textContent === innerHTML SI
+                let respuesta = document.querySelector("#respuesta")
+                respuesta.appendChild(title)
+                respuesta.appendChild(img)
+                
+            })
+        })
+        //Ejemplo POST
+        document.getElementById("post").addEventListener("click",function(){
+            $.post('https://jsonplaceholder.typicode.com/posts',{ //en post no se envia información en JSON?
+                title:'Hola Mundo!',
+                body: "Cohorte FT41B",
+                idUser: 1,
+                conectado: 74,
+            },function(data){
+                console.log(data);
+            })
+        })
+    </script>
+</body> 
+</html>

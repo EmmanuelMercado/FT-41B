@@ -1,0 +1,27 @@
+body {
+    background-color: red;
+}
+
+@colorPrincipal : blue;
+
+div {
+    color: @colorPrincipal;
+}
+
+footer {
+    color: @colorPrincipal
+}
+
+.holis {
+    color: @colorPrincipal;
+}
+
+@ancho: 49px;
+
+span {
+    width: @ancho * 2;
+}
+
+p{
+    font-size: if((@ancho>50px), 30px, 15px);
+}
