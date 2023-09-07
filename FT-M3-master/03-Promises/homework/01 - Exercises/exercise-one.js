@@ -29,6 +29,7 @@ function problemA() {
 
   // promise version
   // Tu código acá:
+  
 }
 
 function problemB() {

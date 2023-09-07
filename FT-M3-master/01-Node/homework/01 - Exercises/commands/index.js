@@ -2,11 +2,17 @@ const fs = require("fs");
 const utils = require("../utils/request");
 const process = require("process");
 
-function pwd() {}
+function pwd(print) {
+    print(process.cwd())
+}
 
-function date() {}
+function date(print) {
+    print(Date())
+}
 
-function echo() {}
+function echo(print,args) {
+    print(args.join())
+}
 
 function ls() {}
 
@@ -18,4 +24,6 @@ function tail() {}
 
 function curl() {}
 
-module.exports = {};
+module.exports = {
+    pwd,date,echo,ls,cat,head,tail,curl
+};
